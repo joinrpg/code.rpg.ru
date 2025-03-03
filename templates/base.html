@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+    <meta
+      name="description"
+      itemprop="about"
+      content="{{config.description}}"
+    />
+    <link rel="stylesheet" href="{{ get_url(path='style.css') | safe }}" />
+  </head>
+
+  <body>
+    <div class="wrapper">
+
+      <section> {% block content %} {% endblock content %} </section>
+
+      <footer>
+        © Команда joinrpg.ru
+      </footer>
+    </div>
+  </body>
+</html>
