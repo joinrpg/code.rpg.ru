@@ -31,16 +31,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: site
-      - name: Sync to S3
-        uses: michaelliao/sync-s3-compatible-action@v2
-        env:
-          SYNC_OPT_UNUSED: delete # force delete unused files on cloud storage:
-          SYNC_DIR: public
-          SYNC_TYPE: aws
-          # bucket must be created in region:
-          SYNC_REGION: ru-central1
-          SYNC_BUCKET: code.rpg.ru
-          # set at: Settings - Secrets and variables - Actions - Repository secrets:
-          SYNC_ACCESS_ID: ${{ secrets.SYNC_ACCESS_ID }}
-          SYNC_ACCESS_SECRET: ${{ secrets.SYNC_ACCESS_SECRET }}
+      - name: Set up S3cmd cli tool
+        uses: leotsarev/s3cmd/@eedaf690f6886e5ecc9242d82baebeaafde96a69
+        with:
+            provider: yandex
+            region: ru-central1
+            access_key: ${{ secrets.SYNC_ACCESS_ID }}
+            secret_key: ${{ secrets.SYNC_ACCESS_SECRET }}
+      - name: sync to s3
+        run: s3cmd sync --recursive public s3://code.rpg.ru
     
