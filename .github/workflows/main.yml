@@ -39,5 +39,7 @@ jobs:
             access_key: ${{ secrets.SYNC_ACCESS_ID }}
             secret_key: ${{ secrets.SYNC_ACCESS_SECRET }}
       - name: sync to s3
-        run: s3cmd sync --recursive public s3://code.rpg.ru
+        run: |
+          ls
+          s3cmd sync --recursive public s3://code.rpg.ru
     
