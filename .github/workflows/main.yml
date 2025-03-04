@@ -41,5 +41,6 @@ jobs:
             secret_key: ${{ secrets.SYNC_ACCESS_SECRET }}
       - name: sync to s3
         run: |
+          cd public
           s3cmd sync --recursive * s3://code.rpg.ru
     
