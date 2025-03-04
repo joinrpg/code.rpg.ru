@@ -31,6 +31,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: site
+          path: public
       - name: Set up S3cmd cli tool
         uses: leotsarev/s3cmd@d7e23bec15fd3d286ceb90214c06a6e897d9e73f
         with:
@@ -39,7 +40,5 @@ jobs:
             access_key: ${{ secrets.SYNC_ACCESS_ID }}
             secret_key: ${{ secrets.SYNC_ACCESS_SECRET }}
       - name: sync to s3
-        run: |
-          ls
-          s3cmd sync --recursive public s3://code.rpg.ru
+        run: s3cmd sync --recursive public s3://code.rpg.ru
     
