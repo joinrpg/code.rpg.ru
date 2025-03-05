@@ -42,5 +42,7 @@ jobs:
       - name: sync to s3
         run: |
           cd public
-          s3cmd sync --recursive * s3://code.rpg.ru
+          s3cmd sync --recursive --exclude "*.css" --exclude "*.js" * s3://code.rpg.ru
+          s3cmd sync --recursive --include "*.css" * --mime-type="text/css" s3://code.rpg.ru
+          s3cmd sync --recursive --include "*.js" * --mime-type="application/javascript" s3://code.rpg.ru
     
