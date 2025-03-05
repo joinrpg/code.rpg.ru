@@ -1,1 +1,14 @@
 // Custom CSS code goes here
+a[href^="http://github.com"]::before,
+a[href^="https://github.com"]::before
+{
+  content: "";
+  width: 11px;
+  height: 11px;
+  margin-right: 4px;
+  background-image: url("/icons/github-mark.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+}
