@@ -33,7 +33,7 @@ jobs:
           name: site
           path: public
       - name: Set up S3cmd cli tool
-        uses: leotsarev/s3cmd@d7e23bec15fd3d286ceb90214c06a6e897d9e73f
+        uses: s3-actions/s3cmd@v1.10.0
         with:
             provider: yandex
             region: ru-central1
